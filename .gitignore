@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# محیط مجازی
+env/
+venv/
+ENV/
+.venv/
+
+# فایل‌های پایگاه داده SQLite
+db.sqlite3
+
+# فایل‌های کش و لاگ
+*.log
+*.pot
+*.pyc
+*.pyo
+
+# پوشه‌های کش Django
+*.sqlite3
+*.py[cod]
+*.mo
+*.pot
+*.log
+*.sqlite3-journal
+
+# تنظیمات محیط محلی
+.local/
+.env
+*.env
+
+# پوشه static و media تولیدشده (اگر نمی‌خواید روی گیت باشند)
+staticfiles/
+media/
+
+# IDE ها
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
