@@ -1,26 +1,29 @@
 # from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse
 
 # Create your views here.
+challenges_month = {
+    "january": "Learn to code",
+    "february": "Learn django",
+    "march": "Learn to code and django",
+    "april": "Learn ai and machine learning",
+    "may": "Learn react and angular",
+    "june": "Learn web development",
+    "july": "Learn deep learning",
+    "august": "Learn frontend and backend",
+    "september": "Learn clean code",
+    "october": "Learn review code",
+    "november": "Learn python and javascript",
+    "december": "Learn to develop mobile app and web app with flutter and react native",
+}
 
 
-def junuary(request):
+# def february(reqest):
+#     return HttpResponse(challenges_month["february"])
+# def january(reqest):
+#     return HttpResponse(challenges_month["january"])
 
-    return HttpResponse("<h1>Eat no Meat through Junuary</h1>")
-
-
-def february(request):
-
-    return HttpResponse("<h1>walk 20 minute through february</h1>")
-
-
-def month(request, month):
-    challenge_text = {
-        "january": "eat no meat",
-        "february": "walk 20 minute",
-    }
-
-    if month in challenge_text:
-        return HttpResponse(f"<h1 style='color:red'>{challenge_text[month]}</h1>")
-    else:
-        return HttpResponseNotFound("<h1>invalid month</h1>")
+def monthly_challenges(reqest, month):
+    if month not in challenges_month:
+        return HttpResponse("This month is not supported")
+    return HttpResponse(challenges_month[month])
