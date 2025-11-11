@@ -37,7 +37,7 @@ def monthly_challenges(reqest, month):
     # , {"month_name": month, "text": challenges_month[month]}
     try:
         challenge_text = challenges_month[month]
-        respanse_data = render(reqest, "challenges/challenge.html")
+        respanse_data = render(reqest, "challenges/challenge.html", {"month_name": month, "text": challenges_month[month]})
         return HttpResponse(respanse_data)
     except:
         return HttpResponseNotFound("<h2 style='color:red'>This month is not supported</h2>")
