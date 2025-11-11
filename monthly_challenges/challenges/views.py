@@ -1,6 +1,6 @@
-# from django.shortcuts import render
+from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponsePermanentRedirect
-from django.template.loader import render_to_string
+# from django.template.loader import render_to_string
 
 # Create your views here.
 challenges_month = {
@@ -29,15 +29,15 @@ def monthly_challenge_by_number(reqest, month):
     if month < 0 or month > len(months):
         return HttpResponseNotFound("Invalid month")
     redirect_month = months[month - 1]
-    redirect_path = f"/chalenges/{redirect_month}"
+    redirect_path = f"/challenges/{redirect_month}"
     return HttpResponsePermanentRedirect(redirect_path)
 
 
 def monthly_challenges(reqest, month):
     # , {"month_name": month, "text": challenges_month[month]}
-    # try:
-    challenge_text = challenges_month[month]
-    respanse_data = render_to_string("challenges/challenge.html")
-    return HttpResponse(respanse_data)
-    # except:
-    return HttpResponseNotFound("<h2 style='color:red'>This month is not supported</h2>")
+    try:
+        challenge_text = challenges_month[month]
+        respanse_data = render(reqest, "challenges/challenge.html")
+        return HttpResponse(respanse_data)
+    except:
+        return HttpResponseNotFound("<h2 style='color:red'>This month is not supported</h2>")
